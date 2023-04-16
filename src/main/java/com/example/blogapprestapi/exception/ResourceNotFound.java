@@ -1,17 +1,16 @@
 package com.example.blogapprestapi.exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ResourceNotFound extends RuntimeException {
     private final String resourceName;
     private final String fieldName;
-    private final String fieldValue;
+    private final Long fieldValue;
 
 
-    public ResourceNotFound(String resourceName, String fieldName, String fieldValue) {
+    public ResourceNotFound(String resourceName, String fieldName, Long fieldValue) {
         super(String.format("%s not found with %s: '%s'", resourceName, fieldName, fieldValue));
         this.resourceName = resourceName;
         this.fieldName = fieldName;
@@ -26,7 +25,7 @@ public class ResourceNotFound extends RuntimeException {
         return fieldName;
     }
 
-    public String getFieldValue() {
+    public Long getFieldValue() {
         return fieldValue;
     }
 }
